@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "SongsService";
+import "google/protobuf/timestamp.proto";
+
+service GrpcSongs {
+    rpc GetSong(GetSongRequest) returns (SongGrpc) {}
+}
+
+message GetSongRequest {
+    int32 id = 1;
+}
+
+message SongGrpc {
+    int32 id = 1;
+
+    google.protobuf.Timestamp createdAt = 2;
+
+    string name = 3;
+
+    repeated string links = 4;
+}
